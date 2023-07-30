@@ -1,0 +1,45 @@
+import React, { useState } from 'react'
+import "./style.css";
+import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
+import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
+
+
+const SliderCode = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const data = [
+    "https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2 ",
+    "https://images.pexels.com/photos/374905/pexels-photo-374905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/999303/pexels-photo-999303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  ]
+
+  const prevSlide = () =>{
+    setCurrentSlide(currentSlide === 0 ? 2:(currentSlide-1));
+  }
+  const nextSlide = () =>{
+    setCurrentSlide(currentSlide === 2 ? 0:(currentSlide+1));
+  }
+
+
+  return (
+    <div className="slider">
+      <div className="container" style={{transform:`translateX(-${currentSlide*100}vw)`, display:"flex"}}>
+        <img src={data[0]} alt="" className='image' />
+        <img src={data[1]} alt=""  className='image' />
+        <img src={data[2]} alt=""  className='image' />
+      </div>
+
+      <div className="icons" >
+        <div className="icon" onClick={prevSlide}>
+          <WestOutlinedIcon />
+        </div>
+        <div className="icon" onClick={nextSlide}>
+        <EastOutlinedIcon />
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+export default SliderCode;
